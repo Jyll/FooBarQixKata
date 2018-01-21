@@ -12,7 +12,20 @@ namespace FooBarQix
 
         public string FooBarQixComputation(int number)
         {
-            return number % 6 == 0 ? "Foo" : number.ToString();
+            string computationResult = string.Empty;
+            if(number % 3 == 0)
+            {
+                computationResult = "Foo";
+            }
+            if(number % 5 == 0)
+            {
+                computationResult += "Bar";
+            }
+            if(string.IsNullOrWhiteSpace(computationResult))
+            {
+                computationResult = number.ToString();
+            }
+            return computationResult;
         }
     }
 }
