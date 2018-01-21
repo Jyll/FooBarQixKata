@@ -29,17 +29,22 @@ namespace FooBarQix
             {
                 computationResult.Append("Qix");
             }
-            for(int i = 0; i < numberAsString.Count( digit => digit == '3'); i++) 
+            for(int i = 0; i < numberAsString.Length; i++) 
             {
-                computationResult.Append("Foo");
-            }
-            for (int i = 0; i < numberAsString.Count(digit => digit == '5'); i++)
-            {
-                computationResult.Append("Bar");
-            }
-            for (int i = 0; i < numberAsString.Count(digit => digit == '7'); i++)
-            {
-                computationResult.Append("Qix");
+                switch (numberAsString.ElementAt(i))
+                {
+                    case '3':
+                        computationResult.Append("Foo");
+                        break;
+                    case '5':
+                        computationResult.Append("Bar");
+                        break;
+                    case '7':
+                        computationResult.Append("Qix");
+                        break;
+                    default:
+                        break;
+                }
             }
             if (string.IsNullOrWhiteSpace(computationResult.ToString()))
             {
