@@ -37,6 +37,10 @@ namespace FooBarQix
             {
                 computationResult.Append("Bar");
             }
+            for (int i = 0; i < numberAsString.Count(digit => digit == '7'); i++)
+            {
+                computationResult.Append("Qix");
+            }
             if (string.IsNullOrWhiteSpace(computationResult.ToString()))
             {
                 computationResult.Append(numberAsString);

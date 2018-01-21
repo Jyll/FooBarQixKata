@@ -93,5 +93,14 @@ namespace FooBarQix.Test
             // assert
             Check.That(actualResult).IsEqualTo("BarBarBar");
         }
+
+        [Fact(DisplayName = "When I compute 77, I should get QixQixQix")]
+        public void WhenICompute77_IShouldHaveQixQixQix()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(77);
+            // assert 
+            Check.That(actualResult).IsEqualTo("QixQixQix");
+        }
     }
 }
