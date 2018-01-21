@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace FooBarQix
 {
@@ -12,28 +14,30 @@ namespace FooBarQix
 
         public string FooBarQixComputation(int number)
         {
-            string computationResult = string.Empty;
+            StringBuilder computationResult = new StringBuilder( string.Empty );
+            string numberAsString = number.ToString();
+
             if(number % 3 == 0)
             {
-                computationResult = "Foo";
+                computationResult.Append("Foo");
             }
             if(number % 5 == 0)
             {
-                computationResult += "Bar";
+                computationResult.Append("Bar");
             }
             if(number % 7 == 0)
             {
-                computationResult += "Qix";
+                computationResult.Append("Qix");
             }
-            if (number.ToString().Contains("3"))
+            for(int i = 0; i < numberAsString.Count( digit => digit == '3'); i++) 
             {
-                computationResult += "Foo";
+                computationResult.Append("Foo");
             }
-            if(string.IsNullOrWhiteSpace(computationResult))
+            if(string.IsNullOrWhiteSpace(computationResult.ToString()))
             {
-                computationResult = number.ToString();
+                computationResult.Append(numberAsString);
             }
-            return computationResult;
+            return computationResult.ToString();
         }
     }
 }
