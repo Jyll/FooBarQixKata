@@ -29,9 +29,10 @@ namespace FooBarQix
             {
                 computationResult.Append("Qix");
             }
-            for(int i = 0; i < numberAsString.Length; i++) 
+
+            foreach(var digit in numberAsString)
             {
-                switch (numberAsString.ElementAt(i))
+                switch (digit)
                 {
                     case '3':
                         computationResult.Append("Foo");
@@ -46,10 +47,12 @@ namespace FooBarQix
                         break;
                 }
             }
+
             if (string.IsNullOrWhiteSpace(computationResult.ToString()))
             {
                 computationResult.Append(numberAsString);
             }
+
             return computationResult.ToString();
         }
     }
