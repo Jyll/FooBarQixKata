@@ -1,6 +1,8 @@
 using System;
 using Xunit;
 using NFluent;
+using Moq;
+using System.Linq;
 
 namespace FooBarQix.Test
 {
@@ -139,6 +141,23 @@ namespace FooBarQix.Test
             // assert
             var actualException = Assert.Throws<InvalidOperationException>(() => _fooBarQixService.FooBarQixComputation(-1));
             Check.That(actualException.Message).IsEqualTo(expectedExceptionMessage);
+        }
+
+        [Fact(DisplayName = "When I want to compute a classic FooBarQix, I get 100 computations of FooBarQix")]
+        public void WhenIComputeClassicFooBarQix_ThenIGet100Computations()
+        {
+            Mock<FooBarQixService> mockedService = new Mock<FooBarQixService>();
+            mockedService.Setup(service => service.FooBarQixComputation(It.IsAny<int>())).Returns("1");
+            var currentService = mockedService.Object;
+            // arrange 
+            // act 
+            var actualResults = currentService.DoFooBarQix(100);
+            // assert
+            Check.That(actualResults.Count()).IsEqualTo(100);
+            Assert.True(actualResults.All(result => result == "1"));
+            mockedService.Verify(service => service.FooBarQixComputation(It.IsAny<int>()), 
+                Times.Exactly(100), 
+                "Service has not been called 100 times.");
         }
     }
 }
