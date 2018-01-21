@@ -13,13 +13,22 @@ namespace FooBarQix.Test
             _fooBarQixService = new FooBarQixService();
         }
 
-        [Fact(DisplayName = "When I compute the number six, I should have Foo")]
+        [Fact(DisplayName = "When I compute the number 6, I should have Foo")]
         public void WhenIComputeTheNumber6WithFooBarQix_ThenIShouldGetBackFoo()
         {
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(6);
             // assert 
             Check.That(actualResult).IsEqualTo("Foo");
+        }
+
+        [Fact(DisplayName = "When I compute the number 10, I should have Bar")]
+        public void WhenIComputeTheNumber10WithFooBarQix_ThenIShouldGetBackBar()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(10);
+            // assert 
+            Check.That(actualResult).IsEqualTo("Bar");
         }
     }
 }
