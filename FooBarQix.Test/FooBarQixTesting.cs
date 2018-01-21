@@ -36,7 +36,17 @@ namespace FooBarQix.Test
         {
             // act
             var actualResult = _fooBarQixService.FooBarQixComputation(14);
+            // assert
             Check.That(actualResult).IsEqualTo("Qix");
+        }
+
+        [Fact(DisplayName = "When I compute 4 (that does not match foobarqix), I should get 4")]
+        public void WhenIComputeANumberThatDoesNotMatchFooBarQixLike4_ThenIShouldGetBackTheNumberGiven()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(4);
+            // assert
+            Check.That(actualResult).IsEqualTo("4");
         }
     }
 }
