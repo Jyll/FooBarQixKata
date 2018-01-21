@@ -85,7 +85,7 @@ namespace FooBarQix.Test
             Check.That(actualResult).IsEqualTo("FooFooFoo");
         }
 
-        [Fact(DisplayName = "When I compute 66, I should get BarBarBar")]
+        [Fact(DisplayName = "When I compute 55, I should get BarBarBar")]
         public void WhenICompute55_IShouldHaveBarBarBar()
         {
             // act 
