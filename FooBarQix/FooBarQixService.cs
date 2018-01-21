@@ -21,6 +21,10 @@ namespace FooBarQix
             {
                 computationResult += "Bar";
             }
+            if(number % 7 == 0)
+            {
+                computationResult += "Qix";
+            }
             if(string.IsNullOrWhiteSpace(computationResult))
             {
                 computationResult = number.ToString();
