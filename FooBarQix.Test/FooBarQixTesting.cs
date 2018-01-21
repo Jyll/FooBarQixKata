@@ -129,5 +129,16 @@ namespace FooBarQix.Test
             // assert 
             Check.That(actualResult).IsEqualTo("FooBarBar");
         }
+
+        [Fact(DisplayName = "When I try to compute a negative number, I should get an exception")]
+        public void WhenIComputeMinus1_ThenIShouldGetAnInvalidOperationException()
+        {
+            // arrange 
+            var expectedExceptionMessage = "Negative numbers are not allowed in this method.";
+            // act
+            // assert
+            var actualException = Assert.Throws<InvalidOperationException>(() => _fooBarQixService.FooBarQixComputation(-1));
+            Check.That(actualException.Message).IsEqualTo(expectedExceptionMessage);
+        }
     }
 }
