@@ -6,6 +6,8 @@ namespace FooBarQix
 {
     public class FooBarQixService : IFooBarQixService
     {
+        private const string NegativeNumberExceptionMessage = "Negative numbers are not allowed in this method.";
+
         public IEnumerable<string> DoFooBarQix(int endIndex = 100)
         {
             throw new NotImplementedException();
@@ -13,6 +15,11 @@ namespace FooBarQix
 
         public string FooBarQixComputation(int number)
         {
+            if(number < 0)
+            {
+                throw new InvalidOperationException(NegativeNumberExceptionMessage);
+            }
+
             StringBuilder computationResult = new StringBuilder( string.Empty );
             string numberAsString = number.ToString();
 
