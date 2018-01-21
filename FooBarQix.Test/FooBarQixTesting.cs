@@ -4,11 +4,11 @@ using NFluent;
 
 namespace FooBarQix.Test
 {
-    public class FoorBarQixTesting
+    public class FooBarQixTesting
     {
         private readonly IFooBarQixService _fooBarQixService; 
 
-        public FoorBarQixTesting()
+        public FooBarQixTesting()
         {
             _fooBarQixService = new FooBarQixService();
         }
@@ -16,7 +16,6 @@ namespace FooBarQix.Test
         [Fact(DisplayName = "When I compute the number six, I should have Foo")]
         public void WhenIComputeTheNumber6WithFooBarQix_ThenIShouldGetBackFoo()
         {
-            // arrange             
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(6);
             // assert 
