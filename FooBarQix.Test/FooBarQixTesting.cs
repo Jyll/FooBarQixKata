@@ -137,6 +137,7 @@ namespace FooBarQix.Test
         {
             // arrange 
             var expectedExceptionMessage = "Negative numbers are not allowed in this method.";
+
             // act
             // assert
             var actualException = Assert.Throws<InvalidOperationException>(() => _fooBarQixService.FooBarQixComputation(-1));
@@ -146,18 +147,28 @@ namespace FooBarQix.Test
         [Fact(DisplayName = "When I want to compute a classic FooBarQix, I get 100 computations of FooBarQix")]
         public void WhenIComputeClassicFooBarQix_ThenIGet100Computations()
         {
+            // arrange 
             Mock<FooBarQixService> mockedService = new Mock<FooBarQixService>();
             mockedService.Setup(service => service.FooBarQixComputation(It.IsAny<int>())).Returns("1");
             var currentService = mockedService.Object;
-            // arrange 
+
             // act 
             var actualResults = currentService.DoFooBarQix(100);
+
             // assert
             Check.That(actualResults.Count()).IsEqualTo(100);
             Assert.True(actualResults.All(result => result == "1"));
             mockedService.Verify(service => service.FooBarQixComputation(It.IsAny<int>()), 
                 Times.Exactly(100), 
                 "Service has not been called 100 times.");
+        }
+
+        [Fact(DisplayName = "When I want to compute a classic FooBarQix with a number lesser than 1, then I get an Exception")]
+        public void WhenIComputeClassicFooBarQixWithAnEndingIndexLesserThanOne_ThenIShouldGetAnException()
+        {
+            // act
+            // assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => _fooBarQixService.DoFooBarQix(0));
         }
     }
 }

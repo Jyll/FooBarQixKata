@@ -10,6 +10,11 @@ namespace FooBarQix
 
         public IEnumerable<string> DoFooBarQix(int endIndex = 100)
         {
+            if(endIndex < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(endIndex), "EndIndex must be superior or equal to 1");
+            }
+
             var fooBarQixList = new List<string>(endIndex);
 
             for( int i = 1; i <= endIndex; i++)
