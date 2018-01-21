@@ -10,9 +10,9 @@ namespace FooBarQix
             throw new NotImplementedException();
         }
 
-        public string FooBarQixComputation(int index)
+        public string FooBarQixComputation(int number)
         {
-            throw new NotImplementedException();
+            return number % 6 == 0 ? "Foo" : number.ToString();
         }
     }
 }

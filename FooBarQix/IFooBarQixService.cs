@@ -2,10 +2,10 @@
 
 namespace FooBarQix
 {
-    internal interface IFooBarQixService
+    public interface IFooBarQixService
     {
         IEnumerable<string> DoFooBarQix(int endIndex = 100);
 
-        string FooBarQixComputation(int index);
+        string FooBarQixComputation(int number);
     }
 }
