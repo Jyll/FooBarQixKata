@@ -102,5 +102,23 @@ namespace FooBarQix.Test
             // assert 
             Check.That(actualResult).IsEqualTo("QixQixQix");
         }
+
+        [Fact(DisplayName = "When I compute 51, I should have FooBar as divisor have high precedence")]
+        public void WhenICompute51_IShouldHaveFooBar()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(51);
+            // assert 
+            Check.That(actualResult).IsEqualTo("FooBar");
+        }
+
+        [Fact(DisplayName = "When I compute 53, I should have BarFoo as content is analysed in the order of appearance")]
+        public void WhenICompute53_IShouldHaveBarFoo()
+        {
+            // act
+            var actualResult = _fooBarQixService.FooBarQixComputation(53);
+            // assert
+            Check.That(actualResult).IsEqualTo("BarFoo");
+        }
     }
 }
