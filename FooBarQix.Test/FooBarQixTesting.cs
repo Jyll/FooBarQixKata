@@ -30,5 +30,13 @@ namespace FooBarQix.Test
             // assert 
             Check.That(actualResult).IsEqualTo("Bar");
         }
+
+        [Fact(DisplayName = "When I compute 14, I should have Qix")]
+        public void WhenIComputeTheNumber14WithFooBarQix_ThenIShouldGetBackQix()
+        {
+            // act
+            var actualResult = _fooBarQixService.FooBarQixComputation(14);
+            Check.That(actualResult).IsEqualTo("Qix");
+        }
     }
 }
