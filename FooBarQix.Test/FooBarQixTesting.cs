@@ -6,7 +6,7 @@ namespace FooBarQix.Test
 {
     public class FooBarQixTesting
     {
-        private readonly IFooBarQixService _fooBarQixService; 
+        private readonly IFooBarQixService _fooBarQixService;
 
         public FooBarQixTesting()
         {
@@ -47,6 +47,15 @@ namespace FooBarQix.Test
             var actualResult = _fooBarQixService.FooBarQixComputation(4);
             // assert
             Check.That(actualResult).IsEqualTo("4");
+        }
+
+        [Fact(DisplayName = "When I compute 60, I should get FooBar")]
+        public void WhenIComputeTheNumber60WithFooBarQix_ThenIShouldGetBackFooBar()
+        {
+            // act
+            var actualResult = _fooBarQixService.FooBarQixComputation(60);
+            // assert
+            Check.That(actualResult).IsEqualTo("FooBar");         
         }
     }
 }
