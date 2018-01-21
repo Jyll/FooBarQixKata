@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace FooBarQix
 {
@@ -6,7 +7,16 @@ namespace FooBarQix
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IFooBarQixService fooBarQixService = new FooBarQixService();
+            var fooBarQixResults = fooBarQixService.DoFooBarQix();
+
+            foreach(var iterationResult in fooBarQixResults)
+            {
+                if(!string.IsNullOrWhiteSpace(iterationResult))
+                {
+                    Console.WriteLine(iterationResult);
+                }
+            }
         }
     }
 }
