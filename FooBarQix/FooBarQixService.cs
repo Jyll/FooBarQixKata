@@ -10,10 +10,17 @@ namespace FooBarQix
 
         public IEnumerable<string> DoFooBarQix(int endIndex = 100)
         {
-            throw new NotImplementedException();
+            var fooBarQixList = new List<string>(endIndex);
+
+            for( int i = 1; i <= endIndex; i++)
+            {
+                fooBarQixList.Add(FooBarQixComputation(i));
+            }
+
+            return fooBarQixList;
         }
 
-        public string FooBarQixComputation(int number)
+        public virtual string FooBarQixComputation(int number)
         {
             if(number < 0)
             {
