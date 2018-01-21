@@ -13,7 +13,7 @@ namespace FooBarQix.Test
             _fooBarQixService = new FooBarQixService();
         }
 
-        [Fact(DisplayName = "When I compute the number 6, I should have Foo")]
+        [Fact(DisplayName = "When I compute 6, I should have Foo")]
         public void WhenIComputeTheNumber6WithFooBarQix_ThenIShouldGetBackFoo()
         {
             // act 
@@ -22,7 +22,7 @@ namespace FooBarQix.Test
             Check.That(actualResult).IsEqualTo("Foo");
         }
 
-        [Fact(DisplayName = "When I compute the number 10, I should have Bar")]
+        [Fact(DisplayName = "When I compute 10, I should have Bar")]
         public void WhenIComputeTheNumber10WithFooBarQix_ThenIShouldGetBackBar()
         {
             // act 
