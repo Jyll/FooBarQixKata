@@ -2,4 +2,8 @@
 # Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
 ################################################################################
 
+/FooBarQixKata/obj
+/FooBarQix/obj
+/.vs/FooBarQix/v15
 /.vs/FooBarQixKata/v15
+/FooBarQix/FooBarQix.Test/obj

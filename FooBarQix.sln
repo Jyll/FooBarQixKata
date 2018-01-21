@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooBarQix", "FooBarQix\FooBarQix.csproj", "{609038A2-1FAA-40B1-B833-5AA4864A5FCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooBarQix.Test", "FooBarQix\FooBarQix.Test\FooBarQix.Test.csproj", "{8E81FBA2-B9FD-4949-AE8E-70DE983512DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{609038A2-1FAA-40B1-B833-5AA4864A5FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609038A2-1FAA-40B1-B833-5AA4864A5FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609038A2-1FAA-40B1-B833-5AA4864A5FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609038A2-1FAA-40B1-B833-5AA4864A5FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E81FBA2-B9FD-4949-AE8E-70DE983512DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E81FBA2-B9FD-4949-AE8E-70DE983512DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E81FBA2-B9FD-4949-AE8E-70DE983512DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E81FBA2-B9FD-4949-AE8E-70DE983512DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFA7F0BD-F216-49B8-84F7-1B8CB7B36626}
+	EndGlobalSection
+EndGlobal
