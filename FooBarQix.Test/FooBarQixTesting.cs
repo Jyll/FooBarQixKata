@@ -67,13 +67,31 @@ namespace FooBarQix.Test
             Check.That(actualResult).IsEqualTo("FooBarQix");
         }
 
-        [Fact(DisplayName = "FooFoo")]
+        [Fact(DisplayName = "When I compute 3, I should get FooFoo")]
         public void WhenICompute3_IShouldHaveFooFoo()
         {
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(3);
             // assert
             Check.That(actualResult).IsEqualTo("FooFoo");
+        }
+
+        [Fact(DisplayName = "When I compute 33, I should get FooFooFoo")]
+        public void WhenICompute33_IShouldHaveFooFooFoo()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(33);
+            // assert
+            Check.That(actualResult).IsEqualTo("FooFooFoo");
+        }
+
+        [Fact(DisplayName = "When I compute 66, I should get BarBarBar")]
+        public void WhenICompute55_IShouldHaveBarBarBar()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(55);
+            // assert
+            Check.That(actualResult).IsEqualTo("BarBarBar");
         }
     }
 }
