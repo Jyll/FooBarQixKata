@@ -120,5 +120,14 @@ namespace FooBarQix.Test
             // assert
             Check.That(actualResult).IsEqualTo("BarFoo");
         }
+
+        [Fact(DisplayName = "When I compute 15, I should have FooBarBar")]
+        public void WhenICompute15_IShouldHaveFooBarBar()
+        {
+            // act 
+            var actualResult = _fooBarQixService.FooBarQixComputation(15);
+            // assert 
+            Check.That(actualResult).IsEqualTo("FooBarBar");
+        }
     }
 }
