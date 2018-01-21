@@ -25,6 +25,10 @@ namespace FooBarQix
             {
                 computationResult += "Qix";
             }
+            if (number.ToString().Contains("3"))
+            {
+                computationResult += "Foo";
+            }
             if(string.IsNullOrWhiteSpace(computationResult))
             {
                 computationResult = number.ToString();
