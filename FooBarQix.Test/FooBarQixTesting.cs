@@ -21,7 +21,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(6);
             // assert 
-            Check.That(actualResult).IsEqualTo("Foo");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo );
         }
 
         [Fact(DisplayName = "When I compute 10, I should have Bar")]
@@ -30,7 +30,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(10);
             // assert 
-            Check.That(actualResult).IsEqualTo("Bar");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Bar );
         }
 
         [Fact(DisplayName = "When I compute 14, I should have Qix")]
@@ -39,7 +39,7 @@ namespace FooBarQix.Test
             // act
             var actualResult = _fooBarQixService.FooBarQixComputation(14);
             // assert
-            Check.That(actualResult).IsEqualTo("Qix");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Qix );
         }
 
         [Fact(DisplayName = "When I compute 4 (that does not match foobarqix), I should get 4")]
@@ -57,7 +57,7 @@ namespace FooBarQix.Test
             // act
             var actualResult = _fooBarQixService.FooBarQixComputation(60);
             // assert
-            Check.That(actualResult).IsEqualTo("FooBar");         
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar );         
         }
 
         [Fact(DisplayName = "When I compute 210, I should get FooBarQix")]
@@ -66,7 +66,7 @@ namespace FooBarQix.Test
             // act
             var actualResult = _fooBarQixService.FooBarQixComputation(210);
             // assert
-            Check.That(actualResult).IsEqualTo("FooBarQix");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar + FooBarQixService.Qix );
         }
 
         [Fact(DisplayName = "When I compute 3, I should get FooFoo")]
@@ -75,7 +75,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(3);
             // assert
-            Check.That(actualResult).IsEqualTo("FooFoo");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Foo );
         }
 
         [Fact(DisplayName = "When I compute 33, I should get FooFooFoo")]
@@ -84,7 +84,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(33);
             // assert
-            Check.That(actualResult).IsEqualTo("FooFooFoo");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Foo + FooBarQixService.Foo );
         }
 
         [Fact(DisplayName = "When I compute 55, I should get BarBarBar")]
@@ -93,7 +93,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(55);
             // assert
-            Check.That(actualResult).IsEqualTo("BarBarBar");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Bar + FooBarQixService.Bar + FooBarQixService.Bar );
         }
 
         [Fact(DisplayName = "When I compute 77, I should get QixQixQix")]
@@ -102,7 +102,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(77);
             // assert 
-            Check.That(actualResult).IsEqualTo("QixQixQix");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Qix + FooBarQixService.Qix + FooBarQixService.Qix );
         }
 
         [Fact(DisplayName = "When I compute 51, I should have FooBar as divisor have high precedence")]
@@ -111,7 +111,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(51);
             // assert 
-            Check.That(actualResult).IsEqualTo("FooBar");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar );
         }
 
         [Fact(DisplayName = "When I compute 53, I should have BarFoo as content is analysed in the order of appearance")]
@@ -120,7 +120,7 @@ namespace FooBarQix.Test
             // act
             var actualResult = _fooBarQixService.FooBarQixComputation(53);
             // assert
-            Check.That(actualResult).IsEqualTo("BarFoo");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Bar + FooBarQixService.Foo );
         }
 
         [Fact(DisplayName = "When I compute 15, I should have FooBarBar")]
@@ -129,7 +129,7 @@ namespace FooBarQix.Test
             // act 
             var actualResult = _fooBarQixService.FooBarQixComputation(15);
             // assert 
-            Check.That(actualResult).IsEqualTo("FooBarBar");
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar + FooBarQixService.Bar );
         }
 
         [Fact(DisplayName = "When I try to compute a negative number, I should get an exception")]

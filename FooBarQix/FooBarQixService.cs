@@ -8,6 +8,18 @@ namespace FooBarQix
     {
         private const string NegativeNumberExceptionMessage = "Negative numbers are not allowed in this method.";
 
+        public const string Foo = "Foo";
+        public const int FooDigit = 3;
+        public const char FooChar = '3';
+
+        public const string Bar = "Bar";
+        public const int BarDigit = 5;
+        public const char BarChar = '5';
+
+        public const string Qix = "Qix";
+        public const int QixDigit = 7;
+        public const char QixChar = '7';
+
         public IEnumerable<string> DoFooBarQix(int endIndex = 100)
         {
             if(endIndex < 1)
@@ -35,31 +47,31 @@ namespace FooBarQix
             StringBuilder computationResult = new StringBuilder( string.Empty );
             string numberAsString = number.ToString();
 
-            if(number % 3 == 0)
+            if(number % FooDigit == 0)
             {
-                computationResult.Append("Foo");
+                computationResult.Append(Foo);
             }
-            if(number % 5 == 0)
+            if(number % BarDigit == 0)
             {
-                computationResult.Append("Bar");
+                computationResult.Append(Bar);
             }
-            if(number % 7 == 0)
+            if(number % QixDigit == 0)
             {
-                computationResult.Append("Qix");
+                computationResult.Append(Qix);
             }
 
             foreach(var digit in numberAsString)
             {
                 switch (digit)
                 {
-                    case '3':
-                        computationResult.Append("Foo");
+                    case FooChar:
+                        computationResult.Append(Foo);
                         break;
-                    case '5':
-                        computationResult.Append("Bar");
+                    case BarChar:
+                        computationResult.Append(Bar);
                         break;
-                    case '7':
-                        computationResult.Append("Qix");
+                    case QixChar:
+                        computationResult.Append(Qix);
                         break;
                     default:
                         break;
