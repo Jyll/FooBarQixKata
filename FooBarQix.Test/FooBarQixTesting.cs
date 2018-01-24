@@ -3,6 +3,7 @@ using Xunit;
 using NFluent;
 using Moq;
 using System.Linq;
+using FooBarQix.Models;
 
 namespace FooBarQix.Test
 {
@@ -90,9 +91,9 @@ namespace FooBarQix.Test
         [Fact(DisplayName = "When a number contains seven then Qix is returned for each occurrence. This is cumulative with the rule about divisibility by seven.")]
         public void WhenNumberIsDivisibleBySevenAndContainsTwoTimesSeven_IShouldHaveQixQixQix()
         {
-            var actualResult = _fooBarQixService.Compute(77);
+            var actualResult = _fooBarQixService.Compute(7);
 
-            Check.That(actualResult).IsEqualTo( FooBarQixService.Qix + FooBarQixService.Qix + FooBarQixService.Qix );
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Qix + FooBarQixService.Qix );
         }
 
         [Fact(DisplayName = "The rule about divisibility is prior to the rule with digits content. So if a number is divisible by 3 and contains a 5, we should have FooBar")]
@@ -150,6 +151,28 @@ namespace FooBarQix.Test
         public void WhenIComputeClassicFooBarQixWithAnEndingIndexLesserThanOne_ThenIShouldGetAnException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => _fooBarQixService.DoFooBarQix(0));
+        }
+
+        [Fact(DisplayName = "When I create my own FooBarQixElement, the name displayed is a non-empty string")]
+        public void FooBarQixElementCreationDisplayNameIsNorNullOrEmpty()
+        {
+
+            Assert.Throws<ArgumentNullException>(() => new TestFooBarQixElement(null, 5));
+        }
+
+        [Fact(DisplayName = "When I create my own FooBarQixElement, the number given is strictly positive")]
+        public void FooBarQixElementCreationElementNumberMustBeStrictlyPositive()
+        {
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => new TestFooBarQixElement("Test", -15));
+        }
+
+        private class TestFooBarQixElement : FooBarQixElement
+        {
+            internal TestFooBarQixElement(string displayName, int elementNumber) : base(displayName, elementNumber)
+            {
+
+            }
         }
     }
 }

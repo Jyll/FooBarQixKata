@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FooBarQix.Models;
+using System;
+using System.Collections.Generic;
 
 namespace FooBarQix
 {
@@ -6,7 +8,15 @@ namespace FooBarQix
     {
         static void Main(string[] args)
         {
-            IFooBarQixService fooBarQixService = new FooBarQixService();
+            var myElements = new List<FooBarQixElement>()
+            {
+                new Foo(),
+                new Bar(),
+                new Qix(),
+                new Piou()
+            };
+
+            IFooBarQixService fooBarQixService = new FooBarQixService(myElements);
             var fooBarQixResults = fooBarQixService.DoFooBarQix();
 
             foreach(var iterationResult in fooBarQixResults)

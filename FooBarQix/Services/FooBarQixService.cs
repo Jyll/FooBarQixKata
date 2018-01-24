@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FooBarQix.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,6 +20,26 @@ namespace FooBarQix
         public const string Qix = "Qix";
         public const int QixDigit = 7;
         public const char QixChar = '7';
+
+        private readonly Queue<FooBarQixElement> elementsQueue;
+
+        public FooBarQixService()
+        {
+            elementsQueue = new Queue<FooBarQixElement>();
+            elementsQueue.Enqueue(new Foo());
+            elementsQueue.Enqueue(new Bar());
+            elementsQueue.Enqueue(new Qix());
+        }
+
+        public FooBarQixService(IEnumerable<FooBarQixElement> elements)
+        {
+            if(elements == null)
+            {
+                elements = new List<FooBarQixElement>();
+            }
+
+            elementsQueue = new Queue<FooBarQixElement>( elements );
+        }
 
         public IEnumerable<string> DoFooBarQix(int endIndex = 100)
         {
@@ -47,34 +68,16 @@ namespace FooBarQix
             StringBuilder computationResult = new StringBuilder( string.Empty );
             string numberAsString = number.ToString();
 
-            if(number % FooDigit == 0)
+            foreach(var fooBarQixElement in elementsQueue)
             {
-                computationResult.Append(Foo);
-            }
-            if(number % BarDigit == 0)
-            {
-                computationResult.Append(Bar);
-            }
-            if(number % QixDigit == 0)
-            {
-                computationResult.Append(Qix);
+                computationResult.Append(fooBarQixElement.DivisibleByElementNumberRule(number));
             }
 
-            foreach(var digit in numberAsString)
+            for (int i = 0; i < numberAsString.Length; i++)
             {
-                switch (digit)
+                foreach (var fooBarQixElement in elementsQueue)
                 {
-                    case FooChar:
-                        computationResult.Append(Foo);
-                        break;
-                    case BarChar:
-                        computationResult.Append(Bar);
-                        break;
-                    case QixChar:
-                        computationResult.Append(Qix);
-                        break;
-                    default:
-                        break;
+                    computationResult.Append(fooBarQixElement.ContainsElementNumberRule(numberAsString, i));
                 }
             }
 
