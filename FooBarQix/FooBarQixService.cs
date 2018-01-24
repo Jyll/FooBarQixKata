@@ -31,13 +31,13 @@ namespace FooBarQix
 
             for( int i = 1; i <= endIndex; i++)
             {
-                fooBarQixList.Add(FooBarQixComputation(i));
+                fooBarQixList.Add(Compute(i));
             }
 
             return fooBarQixList;
         }
 
-        public virtual string FooBarQixComputation(int number)
+        public virtual string Compute(int number)
         {
             if(number < 0)
             {

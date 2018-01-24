@@ -15,159 +15,140 @@ namespace FooBarQix.Test
             _fooBarQixService = new FooBarQixService();
         }
 
-        [Fact(DisplayName = "When I compute 6, I should have Foo")]
-        public void WhenIComputeTheNumber6WithFooBarQix_ThenIShouldGetBackFoo()
+        [Fact(DisplayName = "If a number is divisible by three then Foo is returned")]
+        public void WhenNumberIsDivisibleByThreeThenFooIsReturned()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(6);
-            // assert 
+            var actualResult = _fooBarQixService.Compute(6);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Foo );
         }
 
-        [Fact(DisplayName = "When I compute 10, I should have Bar")]
-        public void WhenIComputeTheNumber10WithFooBarQix_ThenIShouldGetBackBar()
+        [Fact(DisplayName = "If a number is divisible by five then Bar is returned")]
+        public void WhenNumberIsDivisibleByFiveThenBarIsReturned()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(10);
-            // assert 
+            var actualResult = _fooBarQixService.Compute(10);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Bar );
         }
 
-        [Fact(DisplayName = "When I compute 14, I should have Qix")]
-        public void WhenIComputeTheNumber14WithFooBarQix_ThenIShouldGetBackQix()
+        [Fact(DisplayName = "If a number is divisible by seven then Qix is returned")]
+        public void WhenNumberIsDivisibleBySevenThenQixIsReturned()
         {
-            // act
-            var actualResult = _fooBarQixService.FooBarQixComputation(14);
-            // assert
+            var actualResult = _fooBarQixService.Compute(14);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Qix );
         }
 
-        [Fact(DisplayName = "When I compute 4 (that does not match foobarqix), I should get 4")]
-        public void WhenIComputeANumberThatDoesNotMatchFooBarQixLike4_ThenIShouldGetBackTheNumberGiven()
+        [Fact(DisplayName = "If a number doesn't meet any of our rules then this number is returned")]
+        public void WhenNumberDoesNotMeetAnyRuleThenThisNumberIsReturned()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(4);
-            // assert
+            var actualResult = _fooBarQixService.Compute(4);
+
             Check.That(actualResult).IsEqualTo("4");
         }
 
-        [Fact(DisplayName = "When I compute 60, I should get FooBar")]
-        public void WhenIComputeTheNumber60WithFooBarQix_ThenIShouldGetBackFooBar()
+        [Fact(DisplayName = "Foo is evaluated before Bar and Bar before Qix. Then if a number is divisible by 3 and 5, FooBar is returned")]
+        public void FooIsEvaluatedBeforeBarSoIfIHaveBothThenIGetFooBar()
         {
-            // act
-            var actualResult = _fooBarQixService.FooBarQixComputation(60);
-            // assert
+            var actualResult = _fooBarQixService.Compute(60);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar );         
         }
 
-        [Fact(DisplayName = "When I compute 210, I should get FooBarQix")]
-        public void WhenIComputeTheNumber210WithFooBarQix_ThenIShouldGetBackFooBarQix()
+        [Fact(DisplayName = "Foo is evaluated before Bar and Bar before Qix.Then if a number is divisible by 3, 5 & 7, FooBarQix is returned")]
+        public void FooIsEvaluatedBeforeBarAndBarBeforeQixSoIfIHaveTheThreeThenIGetFooBarQix()
         {
-            // act
-            var actualResult = _fooBarQixService.FooBarQixComputation(210);
-            // assert
+            var actualResult = _fooBarQixService.Compute(210);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar + FooBarQixService.Qix );
         }
 
-        [Fact(DisplayName = "When I compute 3, I should get FooFoo")]
-        public void WhenICompute3_IShouldHaveFooFoo()
+        [Fact(DisplayName = "When a number contains three then Foo is returned for each occurrence")]
+        public void WhenNumberContainsThreeThenFooIsReturned()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(3);
-            // assert
-            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Foo );
+            var actualResult = _fooBarQixService.Compute(13);
+
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo );
         }
 
-        [Fact(DisplayName = "When I compute 33, I should get FooFooFoo")]
-        public void WhenICompute33_IShouldHaveFooFooFoo()
+        [Fact(DisplayName = "The foo rule about divisibility is cumulative with the rule about a digit containing 3")]
+        public void WhenNumberIsDivisibleByThreeAndContainsThreeOnceThenIShouldHaveFooFoo()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(33);
-            // assert
-            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Foo + FooBarQixService.Foo );
+            var actualResult = _fooBarQixService.Compute(3);
+
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Foo +FooBarQixService.Foo );
         }
 
-        [Fact(DisplayName = "When I compute 55, I should get BarBarBar")]
-        public void WhenICompute55_IShouldHaveBarBarBar()
+        [Fact(DisplayName = "When a number contains five then Bar is returned for each occurrence. This is cumulative with the rule about divisibility by 5")]
+        public void WhenNumberIsDivisibleByFiveAndContainsFiveOnceThenIShouldHaveBarBar()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(55);
-            // assert
-            Check.That(actualResult).IsEqualTo( FooBarQixService.Bar + FooBarQixService.Bar + FooBarQixService.Bar );
+            var actualResult = _fooBarQixService.Compute(5);
+
+            Check.That(actualResult).IsEqualTo( FooBarQixService.Bar + FooBarQixService.Bar );
         }
 
-        [Fact(DisplayName = "When I compute 77, I should get QixQixQix")]
-        public void WhenICompute77_IShouldHaveQixQixQix()
+        [Fact(DisplayName = "When a number contains seven then Qix is returned for each occurrence. This is cumulative with the rule about divisibility by seven.")]
+        public void WhenNumberIsDivisibleBySevenAndContainsTwoTimesSeven_IShouldHaveQixQixQix()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(77);
-            // assert 
+            var actualResult = _fooBarQixService.Compute(77);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Qix + FooBarQixService.Qix + FooBarQixService.Qix );
         }
 
-        [Fact(DisplayName = "When I compute 51, I should have FooBar as divisor have high precedence")]
-        public void WhenICompute51_IShouldHaveFooBar()
+        [Fact(DisplayName = "The rule about divisibility is prior to the rule with digits content. So if a number is divisible by 3 and contains a 5, we should have FooBar")]
+        public void WhenNumberIsDivisibleByThreeAndContainsFive_ThenIShouldHaveFooBar()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(51);
-            // assert 
+            var actualResult = _fooBarQixService.Compute(51);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar );
         }
 
         [Fact(DisplayName = "When I compute 53, I should have BarFoo as content is analysed in the order of appearance")]
         public void WhenICompute53_IShouldHaveBarFoo()
         {
-            // act
-            var actualResult = _fooBarQixService.FooBarQixComputation(53);
-            // assert
+            var actualResult = _fooBarQixService.Compute(53);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Bar + FooBarQixService.Foo );
         }
 
         [Fact(DisplayName = "When I compute 15, I should have FooBarBar")]
         public void WhenICompute15_IShouldHaveFooBarBar()
         {
-            // act 
-            var actualResult = _fooBarQixService.FooBarQixComputation(15);
-            // assert 
+            var actualResult = _fooBarQixService.Compute(15);
+
             Check.That(actualResult).IsEqualTo( FooBarQixService.Foo + FooBarQixService.Bar + FooBarQixService.Bar );
         }
 
-        [Fact(DisplayName = "When I try to compute a negative number, I should get an exception")]
+        [Fact(DisplayName = "Only positive numbers can be computed")]
         public void WhenIComputeMinus1_ThenIShouldGetAnInvalidOperationException()
         {
-            // arrange 
             var expectedExceptionMessage = "Negative numbers are not allowed in this method.";
 
-            // act
-            // assert
-            var actualException = Assert.Throws<InvalidOperationException>(() => _fooBarQixService.FooBarQixComputation(-1));
+            var actualException = Assert.Throws<InvalidOperationException>(() => _fooBarQixService.Compute(-1));
             Check.That(actualException.Message).IsEqualTo(expectedExceptionMessage);
         }
 
-        [Fact(DisplayName = "When I want to compute a classic FooBarQix, I get 100 computations of FooBarQix")]
+        [Fact(DisplayName = "Classic FooBarQix exercise is computed over 100 iterations from 1 to 100")]
         public void WhenIComputeClassicFooBarQix_ThenIGet100Computations()
         {
-            // arrange 
             Mock<FooBarQixService> mockedService = new Mock<FooBarQixService>();
-            mockedService.Setup(service => service.FooBarQixComputation(It.IsAny<int>())).Returns("1");
+            // compute will always return 1
+            mockedService.Setup(service => service.Compute(It.IsAny<int>())).Returns("1");
             var currentService = mockedService.Object;
 
-            // act 
             var actualResults = currentService.DoFooBarQix(100);
 
-            // assert
             Check.That(actualResults.Count()).IsEqualTo(100);
-            Assert.True(actualResults.All(result => result == "1"));
-            mockedService.Verify(service => service.FooBarQixComputation(It.IsAny<int>()), 
+            // check that returned result of compute has not been modified
+            Assert.True(actualResults.All(result => result == "1"));          
+            mockedService.Verify(service => service.Compute(It.IsAny<int>()), 
                 Times.Exactly(100), 
                 "Service has not been called 100 times.");
         }
 
-        [Fact(DisplayName = "When I want to compute a classic FooBarQix with a number lesser than 1, then I get an Exception")]
+        [Fact(DisplayName = "Classic FooBarQix exercise does not begin with a number inferior to 1")]
         public void WhenIComputeClassicFooBarQixWithAnEndingIndexLesserThanOne_ThenIShouldGetAnException()
         {
-            // act
-            // assert
             Assert.Throws<ArgumentOutOfRangeException>(() => _fooBarQixService.DoFooBarQix(0));
         }
     }

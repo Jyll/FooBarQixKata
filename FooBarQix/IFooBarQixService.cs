@@ -6,6 +6,6 @@ namespace FooBarQix
     {
         IEnumerable<string> DoFooBarQix(int endIndex = 100);
 
-        string FooBarQixComputation(int number);
+        string Compute(int number);
     }
 }
